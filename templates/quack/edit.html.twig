@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify Quack{% endblock %}
+
+{% block body %}
+    <h1>Modify Quack</h1>
+
+    {{ include('quack/_form.html.twig') }}
+
+    <a href="{{ path('app_quack_index') }}" class="btn btn-danger">back to list</a>
+{% endblock %}

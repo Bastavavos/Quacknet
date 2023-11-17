@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper text-center">
+        <h1 class="text-2xl font-bold mb-4"></h1>
+        <ul class="quack-list mx-auto">
+            {% for quack in quacks %}
+            <li class="quack-item relative">
+                <p class="color text-black">{{ quack.content }}</p>
+                <small class="text-black block mb-2">(Créé
+                    le {{ quack.createdAt ? quack.createdAt|date('Y-m-d H:i:s') : '' }})</small>
+                <div class="flex justify-end">
+                    <a href="{{ path('app_quack_edit',{'id':quack.id}) }}" class="btn btn-primary mr-2"> edit </a>
+                    <a href="{{ path('app_quack_delete',{'id':quack.id}) }}" class="btn btn-danger"> delete </a>
+                    <a href="{{ path('app_quack_comment',{'id':quack.id}) }}" class="btn btn-danger"> comment </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+            {% endfor %}
+
+{% endblock %}

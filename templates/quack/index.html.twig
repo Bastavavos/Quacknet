@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quack.Net{% endblock %}
+
+{% block body %}
+
+    <style>
+        .quack-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quack-item {
+            background-color: #ffffff;
+            border: 2px solid #C4C4C4;
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+    </style>
+
+    <div class="example-wrapper text-center">
+    <h1 class="text-2xl font-bold mb-4"></h1>
+    <ul class="quack-list mx-auto">
+    {% for quack in quacks %}
+        <li class="quack-item relative">
+            <p class="color text-black">{{ quack.content }}</p>
+            <small class="text-black block mb-2">(Créé
+                le {{ quack.createdAt ? quack.createdAt|date('Y-m-d H:i:s') : '' }})</small>
+            <div class="flex justify-end">
+                <a href="{{ path('app_quack_edit',{'id':quack.id}) }}" class="btn btn-primary mr-2"> edit </a>
+                <a href="{{ path('app_quack_delete',{'id':quack.id}) }}" class="btn btn-danger"> delete </a>
+            </div>
+        </li>
+        </ul>
+        </div>
+
+    {% endfor %}
+
+    <div class="example-wrapper text-center mt-10 mb-10">
+        <a href="{{ path('app_quack_new') }}" class="btn btn-danger"> Post Quack </a>
+    </div>
+
+{% endblock %}
+
